@@ -32,7 +32,6 @@ public class IngresoServiceImpl implements IngresoService {
 		if (ingreso.getVehiculo() != null) {
 			if (ingreso.getVehiculo().getPlaca().charAt(0) == 'A') {
 				DayOfWeek dia = LocalDateTime.now().getDayOfWeek();
-				System.out.println("El dia es " + dia);
 				if (dia.equals(dia.SUNDAY) || dia.equals(dia.MONDAY)) {
 					ingresoDAO.agregarIngreso(ingreso);
 				} else {
@@ -65,8 +64,23 @@ public class IngresoServiceImpl implements IngresoService {
 	}
 
 	private double calcularPagoMoto(Vehiculo vehiculo, LocalDateTime horaIngreso) {
+		double totalPagar=0;
+		LocalDateTime horaFinal = LocalDateTime.now();
+		int horasParqueado = (int) ChronoUnit.HOURS.between(horaFinal, horaIngreso);
+		if (horasParqueado >= 9) {
+			if (horasParqueado < 25) {
+				totalPagar = VALOR_DIA_MOTO;
+			} else {
+				int resultadoDias = Math.round(horasParqueado / 24);
 
-		return 0;
+				int resultadoHoras = horasParqueado - resultadoDias * 24;
+				totalPagar = resultadoDias * VALOR_DIA_MOTO + (resultadoHoras * VALOR_HORA_MOTO);
+			}
+		}else {
+			totalPagar=horasParqueado * VALOR_HORA_MOTO;
+		}
+		
+		return totalPagar;
 	}
 
 	private double calcularPagoCarro(Vehiculo vehiculo, LocalDateTime horaIngreso) {

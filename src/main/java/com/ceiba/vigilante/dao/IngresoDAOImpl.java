@@ -47,7 +47,7 @@ public class IngresoDAOImpl implements IngresoDAO {
 		Query query = sistemaDePersistencia.getEntityManager().createNamedQuery(INGRESO_FIND_BY_PLACA);
 		query.setParameter(PLACA, placa);
 		List<IngresoEntity> resultList = query.getResultList();
-		return !resultList.isEmpty() ? (IngresoEntity) resultList.get(0) : null;
+		return !resultList.isEmpty() ? resultList.get(0) : null;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -56,11 +56,12 @@ public class IngresoDAOImpl implements IngresoDAO {
 		return sistemaDePersistencia.getEntityManager().createNamedQuery(INGRESO_FIND_ALL).getResultList();
 
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public int obtenerIngresosPorTipoVehiculoParqueado(String tipoVehiculo) {				
 			Query query = sistemaDePersistencia.getEntityManager().createNamedQuery(INGRESO_TIPO_VEHICULO_PARQUEADO);
 			query.setParameter(TIPO_VEHICULO, tipoVehiculo);
+			
 			List<IngresoEntity> resultList = query.getResultList();
 		return !resultList.isEmpty()? resultList.size(): 0;
 	}
