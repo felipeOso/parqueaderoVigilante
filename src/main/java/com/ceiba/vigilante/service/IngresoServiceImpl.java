@@ -28,24 +28,24 @@ public class IngresoServiceImpl implements IngresoService {
 
 	@Override
 	public void agregarIngreso(Ingreso ingreso) {
-
-		if (ingreso.getVehiculo() != null) {
-			if (ingreso.getVehiculo().getPlaca().charAt(0) == 'A') {
-				DayOfWeek dia = LocalDateTime.now().getDayOfWeek();
-				if (dia.equals(dia.SUNDAY) || dia.equals(dia.MONDAY)) {
-					ingresoDAO.agregarIngreso(ingreso);
-				} else {
-					throw new IngresoException(INGRESO_NO_AUTORIZADO);
-				}
-
-			} else {
-				ingresoDAO.agregarIngreso(ingreso);
-			}
-
-		} else {
+		
+		
+		if( ingreso.getVehiculo() == null ) {
 			throw new VehiculoException(INGRESO_SIN_VEHICULO);
 		}
+		
+		if( !(validarPlaca(ingreso) && validarDiaIngreso()) ) {
+			throw new IngresoException(INGRESO_NO_AUTORIZADO);
+		}
+		
 
+		ingresoDAO.agregarIngreso(ingreso);
+		
+
+	}
+
+	private boolean validarPlaca(Ingreso ingreso) {
+		return ingreso.getVehiculo().getPlaca().charAt(0) == 'A';
 	}
 
 	@Override
@@ -83,6 +83,7 @@ public class IngresoServiceImpl implements IngresoService {
 		return totalPagar;
 	}
 
+	
 	private double calcularPagoCarro(Vehiculo vehiculo, LocalDateTime horaIngreso) {
 		double totalPagar = 0;
 		LocalDateTime horaFinal = LocalDateTime.now();
@@ -100,6 +101,11 @@ public class IngresoServiceImpl implements IngresoService {
 			totalPagar=horasParqueado * VALOR_HORA_CARRO;
 		}
 		return totalPagar;
+	}
+	
+	public boolean validarDiaIngreso() {
+		DayOfWeek dia = LocalDateTime.now().getDayOfWeek();
+		return dia.equals(dia.SUNDAY) || dia.equals(dia.MONDAY);
 	}
 
 }
