@@ -24,7 +24,7 @@ public class VigilanteController {
 	}
 
 	public void ingresarVehiculo(Vehiculo vehiculo) {
-		vehiculoService.agregarVehiculo(vehiculo);
+		 ingresoService.agregarIngreso(ingreso);
 	}
 
 	public double cobrar(IngresoDAO ingresoDAO, VehiculoDAO vehiculoDAO) {
