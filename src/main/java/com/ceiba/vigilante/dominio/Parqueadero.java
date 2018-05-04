@@ -4,11 +4,13 @@ public class Parqueadero {
 
 	private int cuposTotalesMotos;
 	private int cuposTotalesCarros;
-
+	
+	public static final Integer CUPOS_TOTALES_MOTOS = 10;
+	public static final Integer CUPOS_TOTALES_CARROS = 20;
 	public Parqueadero() {
 		super();
-		this.cuposTotalesMotos = 10;
-		this.cuposTotalesCarros = 20;
+		this.cuposTotalesMotos = CUPOS_TOTALES_MOTOS;
+		this.cuposTotalesCarros = CUPOS_TOTALES_CARROS;
 	}
 
 	public Parqueadero(int cuposTotalesMotos, int cuposTotalesCarros) {
