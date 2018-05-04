@@ -17,7 +17,8 @@ public class VehiculoTest {
 	@Test
 	public void CrearVehiculoTest() {
 		
-	//SEGUIMOS EL PATRON AAA Arrange/Act/Assert
+	//SEGUIMOS EL PATRON AAA Arrange/Act/Assert una prueba para mirar jenkins
+		
 		
 		//Arrange
 		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().

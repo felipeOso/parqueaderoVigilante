@@ -9,6 +9,7 @@
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 
 jar {
 	baseName = 'vigilanteParqueadero'
@@ -16,6 +17,7 @@ jar {
 }
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -30,3 +32,13 @@ dependencies {
 	  testCompile 'junit:junit:4.12'
 	  testCompile 'org.mockito:mockito-all:1.10.19'
 }
+
+test{
+	jacoco{
+		append = false
+		destinationFile =file("jacoco/jacocoTest.exec")
+	}
+	reports.junitXml.destination = file("jacoco/test-results")
+}
+
+jacocoTestReport.dependsOn(test)
