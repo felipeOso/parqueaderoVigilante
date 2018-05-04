@@ -17,7 +17,7 @@ public class VehiculoTest {
 	@Test
 	public void CrearVehiculoTest() {
 		
-	//SEGUIMOS EL PATRON AAA
+	//SEGUIMOS EL PATRON AAA Arrange/Act/Assert
 		
 		//Arrange
 		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().
