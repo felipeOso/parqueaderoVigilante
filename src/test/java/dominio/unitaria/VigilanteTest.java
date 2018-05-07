@@ -1,6 +1,5 @@
 package dominio.unitaria;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -27,7 +26,7 @@ public class VigilanteTest {
 		boolean validar =vigilanteService.validarPlaca(ingreso);
 		
 		// Assert
-		assertFalse(validar);
+		assertTrue(validar);
 
 		
 	}

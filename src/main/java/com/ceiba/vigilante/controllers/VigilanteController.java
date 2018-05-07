@@ -7,7 +7,8 @@ public class VigilanteController {
 
 	private VigilanteService vigilanteService;
 
-	// AQUI LE PASO LOS VALORES DEL FRONTEND, la firma de Ingreso(vehiculo, horaIngreso, totalPagar, horaSalida)
+	// AQUI LE PASO LOS VALORES DEL FRONTEND, la firma de Ingreso(vehiculo,
+	// horaIngreso, totalPagar, horaSalida)
 	Ingreso ingreso = new Ingreso();
 
 	public VigilanteController(VigilanteService vigilanteService) {
@@ -15,11 +16,11 @@ public class VigilanteController {
 		this.vigilanteService = vigilanteService;
 	}
 
-	public void registrarVehiculo(Ingreso ingreso) {
+	public void registrarIngresoVehiculo(Ingreso ingreso) {
 		vigilanteService.registrarVehiculoAIngresar(ingreso);
 	}
 
-	public double cobrar(Ingreso ingreso) {
+	public double cobrarParqueo(Ingreso ingreso) {
 		return vigilanteService.cobrar(ingreso);
 	}
 }
