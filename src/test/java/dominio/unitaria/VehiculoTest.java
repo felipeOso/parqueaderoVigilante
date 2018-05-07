@@ -13,6 +13,7 @@ public class VehiculoTest {
 
 	private static final String PLACA ="abc123";
 	private static final String TIPO_VEHICULO="Moto";
+	private static final double CILINDRAJE = 300D;
 	
 	@Test
 	public void CrearVehiculoTest() {
@@ -22,7 +23,7 @@ public class VehiculoTest {
 		
 		//Arrange
 		VehiculoTestDataBuilder vehiculoTestDataBuilder = new VehiculoTestDataBuilder().
-				conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO);
+				conPlaca(PLACA).conTipoVehiculo(TIPO_VEHICULO).conCilindraje(CILINDRAJE);
 		
 		//Act
 		Vehiculo vehiculo = vehiculoTestDataBuilder.build();
@@ -30,5 +31,6 @@ public class VehiculoTest {
 		//Assert
 		assertEquals(PLACA, vehiculo.getPlaca());
 		assertEquals(TIPO_VEHICULO, vehiculo.getTipoVehiculo());
+		
 	}
 }

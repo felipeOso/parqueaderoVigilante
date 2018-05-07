@@ -1,33 +1,25 @@
 package com.ceiba.vigilante.controllers;
 
-import com.ceiba.vigilante.dao.IngresoDAO;
-import com.ceiba.vigilante.dao.VehiculoDAO;
 import com.ceiba.vigilante.dominio.Ingreso;
-import com.ceiba.vigilante.dominio.Vehiculo;
-import com.ceiba.vigilante.service.IngresoService;
-import com.ceiba.vigilante.service.VehiculoService;
+import com.ceiba.vigilante.service.VigilanteService;
 
 public class VigilanteController {
 
-	private IngresoService ingresoService;
-	private VehiculoService vehiculoService;
+	private VigilanteService vigilanteService;
 
-	// AQUI LE PASO LOS VALORES DEL FRONTEND
-		Ingreso ingreso = new Ingreso();
-		
+	// AQUI LE PASO LOS VALORES DEL FRONTEND, la firma de Ingreso(vehiculo, horaIngreso, totalPagar, horaSalida)
+	Ingreso ingreso = new Ingreso();
 
-
-	public VigilanteController(IngresoService ingresoService, VehiculoService vehiculoService) {
+	public VigilanteController(VigilanteService vigilanteService) {
 		super();
-		this.ingresoService = ingresoService;
-		this.vehiculoService = vehiculoService;
+		this.vigilanteService = vigilanteService;
 	}
 
-	public void ingresarVehiculo(Vehiculo vehiculo) {
-		 ingresoService.agregarIngreso(ingreso);
+	public void registrarVehiculo(Ingreso ingreso) {
+		vigilanteService.registrarVehiculoAIngresar(ingreso);
 	}
 
-	public double cobrar(IngresoDAO ingresoDAO, VehiculoDAO vehiculoDAO) {
-		return ingresoService.cobrar(ingreso);
+	public double cobrar(Ingreso ingreso) {
+		return vigilanteService.cobrar(ingreso);
 	}
 }

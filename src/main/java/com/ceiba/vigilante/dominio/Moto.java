@@ -1,20 +1,10 @@
 package com.ceiba.vigilante.dominio;
 
-public class Moto extends Vehiculo{
+public class Moto extends Vehiculo {
 
-	private String cilindraje;
-
-	public Moto(String placa, String tipoVehiculo, String cilindraje) {
-		super(placa, tipoVehiculo);
-		this.cilindraje = cilindraje;
+	public Moto(String placa, String tipoVehiculo, double cilindraje) {
+		super(placa, tipoVehiculo, cilindraje);
 		this.setTipoVehiculo("Moto");
 	}
 
-	public String getCilindraje() {
-		return cilindraje;
-	}
-
-	public void setCilindraje(String cilindraje) {
-		this.cilindraje = cilindraje;
-	}
 }

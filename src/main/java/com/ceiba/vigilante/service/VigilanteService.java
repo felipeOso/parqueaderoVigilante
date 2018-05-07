@@ -2,9 +2,9 @@ package com.ceiba.vigilante.service;
 
 import com.ceiba.vigilante.dominio.Ingreso;
 
-public interface IngresoService {
+public interface VigilanteService {
 
-	void agregarIngreso(Ingreso ingreso);
+	void registrarVehiculoAIngresar(Ingreso ingreso);
 	public double cobrar(Ingreso ingreso); 
 	
 

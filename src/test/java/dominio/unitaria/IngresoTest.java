@@ -32,6 +32,7 @@ public class IngresoTest {
 		// Arrange
 		
 		assertEquals(PLACA, ingreso.getVehiculo().getPlaca());
-		assertEquals(HORA_INGRESO,LocalDateTime.now() );
+		assertEquals(TIPO_VEHICULO, ingreso.getVehiculo().getTipoVehiculo());
+
 	}
 }
